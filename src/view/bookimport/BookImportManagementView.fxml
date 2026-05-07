@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.bookimport.BookImportManagementController"
+            style="-fx-background-color: #f4f6f8;">
+
+    <!-- ================= TOP: SEARCH + ACTION ================= -->
+    <top>
+        <HBox spacing="12"
+              alignment="CENTER"
+              style="-fx-background-color: white;
+                     -fx-border-color: #dddddd;
+                     -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <!-- ComboBox chọn tiêu chí -->
+            <ComboBox fx:id="searchCriteriaComboBox"
+                      prefWidth="240"
+                      style="-fx-font-size: 16px;"/>
+
+            <!-- Ô nhập tìm kiếm -->
+            <TextField fx:id="searchField"
+                       prefWidth="420"
+                       promptText="Nhập từ khóa tìm kiếm"
+                       style="-fx-font-size: 16px;"/>
+
+            <!-- Ô nhập tìm kiếm -->
+            <HBox fx:id="searchTimeBox"
+                  spacing="10"
+                  visible="false"
+                  managed="false"
+                  style="-fx-font-size: 16px;">
+
+                <DatePicker fx:id="fromDayDatePicker"
+                            prefWidth="150"
+                            promptText="Từ ngày"/>
+
+                <DatePicker fx:id="toDayDatePicker"
+                            prefWidth="150"
+                            promptText="Đến ngày"/>
+            </HBox>
+
+            <Button text="Tìm kiếm"
+                    onAction="#onSearch"
+                    style="-fx-font-size: 16px;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Nhóm nút chức năng -->
+            <Button text="Nhập sách"
+                    onAction="#importBook"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Xem chi tiết"
+                    fx:id="importDetailButton"
+                    disable="true"
+                    onAction="#onShowImportDetail"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Làm mới"
+                    onAction="#onRefresh"
+                    style="-fx-font-size: 16px;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER: TABLE ================= -->
+    <center>
+        <VBox>
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <TableView fx:id="bookImportTableView" style="-fx-font-size: 16px;">
+                <columns>
+                    <TableColumn fx:id="ordinalNumberColumn" text="STT" prefWidth="50"/>
+                    <TableColumn fx:id="importCodeColumn" text="Mã phiếu nhập"/>
+                    <TableColumn fx:id="importerCodeColumn" text="Mã tài khoản"/>
+                    <TableColumn fx:id="importerUsernameColumn" text="Tên tài khoản"/>
+                    <TableColumn fx:id="importDateColumn" text="Thời gian nhập sách"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- ================= BOTTOM: PAGINATION ================= -->
+    <bottom>
+        <fx:include fx:id="pagination"
+                    source="/view/PaginationView.fxml"/>
+    </bottom>
+
+</BorderPane>

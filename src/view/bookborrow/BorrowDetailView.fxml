@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.bookborrow.BorrowDetailController"
+            style="-fx-background-color: #f4f6f8;">
+    <top>
+        <HBox
+                style="
+                    -fx-background-color: white;
+                 -fx-border-color: #dddddd;
+                 -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets top="15" bottom="15" left="15" right="15"/>
+            </padding>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label
+                    text="CHI TIẾT LƯỢT MƯỢN SÁCH"
+                    style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Quay lại" onAction="#onQuit" style="-fx-font-size: 16px;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox >
+            <padding>
+                <Insets top="15" left="15" right="15" bottom="15"/>
+            </padding>
+            <!-- ===== TRANG 1: THÔNG TIN NGƯỜI MƯỢN ===== -->
+            <VBox spacing="12" alignment="CENTER_LEFT"
+                  style="
+                          -fx-padding: 60;
+                          -fx-background-color: #ffffff;
+                          -fx-border-color: #dddddd;
+                          -fx-border-radius: 10;
+                          -fx-background-radius: 10;">
+                <Label text="Thông tin phiếu lượt mượn"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <GridPane hgap="15" vgap="12" style="-fx-font-size: 16px;">
+                    <Label text="Mã phiếu lượt mượn :" GridPane.rowIndex="0" />
+                    <Label fx:id="borrowCodeLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Phí phạt :" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <Label fx:id="lateFeeLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Thời gian mượn Sách :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="borrowDateLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Thời gian dự kiến trả sách :" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <Label fx:id="dueDateLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                    <Label text="Thời gian trả sách :" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+                    <Label fx:id="returnDateLabel" GridPane.rowIndex="1" GridPane.columnIndex="5"/>
+
+                </GridPane>
+
+                <Label text="Thông tin người mượn"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <GridPane hgap="15" vgap="12" style="-fx-font-size: 16px;">
+                    <Label text="Mã hội viên :" GridPane.rowIndex="0"/>
+                    <Label fx:id="borrowerCodeLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Tên hội viên :" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <Label fx:id="borrowerNameLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Tuổi :" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+                    <Label fx:id="borrowerAgeLabel" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+
+                    <Label text="Giới tính :" GridPane.rowIndex="1" />
+                    <Label fx:id="borrowerGenderLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Địa chỉ :" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <Label fx:id="borrowerAddressLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                    <Label text="Số điện thoại :" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+                    <Label fx:id="borrowerPhoneNumberLabel" GridPane.rowIndex="1" GridPane.columnIndex="5"/>
+                </GridPane>
+            </VBox>
+
+            <!-- ===== TRANG 2: BẢNG SÁCH ===== -->
+            <VBox VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="15" left="15" right="15" bottom="15"/>
+                </padding>
+
+                <TableView fx:id="borrowedBookTableView" style="-fx-font-size: 16px;">
+                    <columns>
+                        <TableColumn fx:id="ordinalNumberColumn" text="STT" prefWidth="50"/>
+                        <TableColumn fx:id="borrowedBookCodeColumn" text="Mã sách"/>
+                        <TableColumn fx:id="borrowedBookNameColumn" text="Tên sách"/>
+                        <TableColumn fx:id="borrowedAuthorColumn" text="Tác giả"/>
+                        <TableColumn fx:id="borrowedPublicationYearColumn" text="Năm xuất bản"/>
+                        <TableColumn fx:id="borrowedCategoryColumn" text="Thể loại"/>
+                        <TableColumn fx:id="borrowedQuantityColumn" text="Số lượng"/>
+                        <TableColumn fx:id="borrowedImageColumn" text="Ảnh"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox >
+    </center>
+
+    <bottom>
+        <fx:include fx:id="pagination"
+                    source="/view/PaginationView.fxml"/>
+    </bottom>
+
+</BorderPane>

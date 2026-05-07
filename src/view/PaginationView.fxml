@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.PaginationController"
+      spacing="10"
+      alignment="CENTER"
+
+      style="-fx-background-color: white;
+             -fx-border-color: #dddddd;
+             -fx-border-width: 1 0 0 0;">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Button text="⏮" onAction="#onFirstPage"/>
+    <Button text="◀" onAction="#onPreviousPage"/>
+
+    <TextField fx:id="pageField"
+               prefWidth="40"
+               alignment="CENTER"/>
+
+    <Label fx:id="totalPagesLabel"/>
+
+    <Button text="▶" onAction="#onNextPage"/>
+    <Button text="⏭" onAction="#onLastPage"/>
+
+</HBox>

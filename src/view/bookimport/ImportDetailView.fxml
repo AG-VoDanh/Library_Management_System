@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.bookimport.ImportDetailController"
+            style="-fx-background-color: #f4f6f8;">
+    <top>
+        <HBox
+                style="
+                    -fx-background-color: white;
+                 -fx-border-color: #dddddd;
+                 -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets top="15" bottom="15" left="15" right="15"/>
+            </padding>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label
+                    text="CHI TIẾT PHIẾU NHẬP SÁCH"
+                    style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Quay lại" onAction="#onQuit" style="-fx-font-size: 16px;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox >
+            <padding>
+                <Insets top="15" left="15" right="15" bottom="15"/>
+            </padding>
+            <!-- ===== TRANG 1: THÔNG TIN NGƯỜI NHẬP ===== -->
+            <VBox spacing="12" alignment="CENTER_LEFT"
+                  style="
+                          -fx-padding: 60;
+                          -fx-background-color: #ffffff;
+                          -fx-border-color: #dddddd;
+                          -fx-border-radius: 10;
+                          -fx-background-radius: 10;">
+                <Label text="Thông tin phiếu nhập sách"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <GridPane hgap="15" vgap="12" style="-fx-font-size: 16px;">
+                    <Label text="Thời gian nhập sách :" GridPane.rowIndex="0" />
+                    <Label fx:id="importDateLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <Label text="Thông tin người nhập"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <GridPane hgap="15" vgap="12" style="-fx-font-size: 16px;">
+                    <Label text="Mã phiếu nhập sách :" GridPane.rowIndex="0" />
+                    <Label fx:id="importCodeLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Mã tài khoản :" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                    <Label fx:id="importerCodeLabel" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Tên tài khoản :" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+                    <Label fx:id="importerUsernameLabel" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
+
+                    <Label text="Tên người dùng :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="importerFullNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Tuổi :" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                    <Label fx:id="importerAgeLabel" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                    <Label text="Số điện thoại :" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+                    <Label fx:id="importerPhoneNumberLabel" GridPane.rowIndex="1" GridPane.columnIndex="5"/>
+
+                    <Label text="Giới tính :" GridPane.rowIndex="2" />
+                    <Label fx:id="importerGenderLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Địa chỉ :" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                    <Label fx:id="importerAddressLabel" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                    <Label text="Vai trò :" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+                    <Label fx:id="importerRoleLabel" GridPane.rowIndex="2" GridPane.columnIndex="5"/>
+                </GridPane>
+            </VBox>
+
+            <!-- ===== TRANG 2: BẢNG SÁCH ===== -->
+            <VBox VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="15" left="15" right="15" bottom="15"/>
+                </padding>
+
+                <TableView fx:id="importedBookTableView" style="-fx-font-size: 16px;">
+                    <columns>
+                        <TableColumn fx:id="ordinalNumberColumn" text="STT" prefWidth="50"/>
+                        <TableColumn fx:id="importedBookCodeColumn" text="Mã sách"/>
+                        <TableColumn fx:id="importedBookNameColumn" text="Tên sách"/>
+                        <TableColumn fx:id="importedAuthorColumn" text="Tác giả"/>
+                        <TableColumn fx:id="importedPublicationYearColumn" text="Năm xuất bản"/>
+                        <TableColumn fx:id="importedCategoryColumn" text="Thể loại"/>
+                        <TableColumn fx:id="importedQuantityColumn" text="Số lượng"/>
+                        <TableColumn fx:id="importedImageColumn" text="Ảnh"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox >
+    </center>
+
+    <bottom>
+        <fx:include fx:id="pagination"
+                    source="/view/PaginationView.fxml"/>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.* ?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="controller.user.LoginController">
+
+    <VBox spacing="18" alignment="CENTER_LEFT" maxWidth="960" maxHeight="720"
+          style="
+              -fx-padding: 72;
+              -fx-background-color: #ffffff;
+              -fx-border-color: #dddddd;
+              -fx-border-radius: 10;
+              -fx-background-radius: 10;
+          ">
+
+        <VBox spacing="18" alignment="CENTER">
+            <Label text="ĐĂNG NHẬP"
+                   style="-fx-font-size: 72px; -fx-font-weight: bold;">
+                <VBox.margin>
+                    <Insets bottom="72"/>
+                </VBox.margin>
+            </Label>
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Tài khoản:" prefWidth="240" style="-fx-font-size: 36px;"/>
+            <TextField fx:id="usernameField"
+                       promptText = "Tài Khoản"
+                       prefWidth="562"
+                       prefHeight="36"
+                       style="-fx-font-size: 36px;"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Mật Khẩu : " prefWidth="240" style="-fx-font-size: 36px;"/>
+            <StackPane fx:id="passwordContainer" HBox.hgrow="ALWAYS" style="-fx-font-size: 36px;">
+
+                <PasswordField fx:id="passwordField"
+                               promptText="Mật Khẩu"/>
+
+                <TextField fx:id="passwordTextField"
+                           promptText="Mật Khẩu "
+                           visible="false"
+                           managed="false"/>
+            </StackPane>
+
+            <Button onAction="#onTogglePasswordVisibility" prefHeight="72" minWidth="72">
+                <graphic>
+                    <FontIcon fx:id="iconEye"
+                              iconLiteral="fas-lock"
+                              iconSize="36"/>
+                </graphic>
+            </Button>
+        </HBox>
+
+        <Label fx:id="notificationLabel"
+               style="-fx-font-size: 36px;"
+               textFill="RED"/>
+
+        <VBox spacing="18" alignment="CENTER">
+            <Button text="Đăng nhập"
+                    prefWidth="240"
+                    prefHeight="36"
+                    style="-fx-font-size: 36px;"
+                    onAction="#onLogin"/>
+        </VBox>
+    </VBox>
+</StackPane>
+

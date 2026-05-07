@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.user.UserManagementController"
+            style="-fx-background-color: #f4f6f8;">
+
+    <!-- ================= TOP: SEARCH + ACTION ================= -->
+    <top>
+        <HBox spacing="12"
+              alignment="CENTER"
+              style="-fx-background-color: white;
+                     -fx-border-color: #dddddd;
+                     -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <!-- ComboBox chọn tiêu chí -->
+            <ComboBox fx:id="searchCriteriaComboBox"
+                      prefWidth="180"
+                      style="-fx-font-size: 16px;"/>
+
+            <!-- Ô nhập tìm kiếm -->
+            <TextField fx:id="searchField"
+                       prefWidth="420"
+                       promptText="Nhập từ khóa tìm kiếm"
+                       style="-fx-font-size: 16px;"/>
+
+            <ComboBox fx:id="searchOptionComboBox"
+                      prefWidth="420"
+                      visible="false"
+                      managed="false"
+                      style="-fx-font-size: 16px;"/>
+
+            <Button text="Tìm kiếm"
+                    onAction="#onSearch"
+                    style="-fx-font-size: 16px;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Nhóm nút chức năng -->
+            <Button text="Thêm"
+                    onAction="#onAddUser"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Sửa"
+                    fx:id="updateButton"
+                    onAction="#onUpdateUser"
+                    disable="true"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Xóa"
+                    fx:id="deleteButton"
+                    onAction="#onDeleteUser"
+                    disable="true"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Khôi phục"
+                    fx:id="restoreButton"
+                    onAction="#onRestoreUser"
+                    disable="true"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Làm mới"
+                    onAction="#onRefresh"
+                    style="-fx-font-size: 16px;"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER: TABLE ================= -->
+    <center>
+        <VBox>
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <TableView fx:id="userTableView" style="-fx-font-size: 16px;">
+                <columns>
+                    <TableColumn fx:id="ordinalNumberColumn" text="STT" prefWidth="50"/>
+                    <TableColumn fx:id="userCodeColumn" text="Mã tài khoản"/>
+                    <TableColumn fx:id="usernameColumn" text="Tên đăng nhập"/>
+                    <TableColumn fx:id="fullNameColumn" text="Tên người dùng"/>
+                    <TableColumn fx:id="ageColumn" text="Tuổi"/>
+                    <TableColumn fx:id="genderColumn" text="Giới tính"/>
+                    <TableColumn fx:id="addressColumn" text="Địa chỉ"/>
+                    <TableColumn fx:id="emailColumn" text="Email"/>
+                    <TableColumn fx:id="phoneNumberColumn" text="Số điện thoại"/>
+                    <TableColumn fx:id="roleColumn" text="vai trò"/>
+                    <TableColumn fx:id="statusColumn" text="Trạng thái"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- ================= BOTTOM: PAGINATION ================= -->
+    <bottom>
+        <fx:include fx:id="pagination"
+                    source="/view/PaginationView.fxml"/>
+    </bottom>
+
+</BorderPane>

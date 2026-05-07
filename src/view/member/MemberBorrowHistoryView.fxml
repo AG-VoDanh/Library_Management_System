@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.member.MemberBorrowHistoryController">
+
+    <!-- ===== HEADER ===== -->
+    <top>
+        <HBox alignment="CENTER"
+              spacing="10"
+              style="
+              -fx-padding: 20;
+              -fx-background-color: #ffffff;
+              -fx-border-color: #dddddd;
+              -fx-border-radius: 10;
+              -fx-background-radius: 10;
+              ">
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="LỊCH SỬ MƯỢN SÁCH"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Xem chi tiết"
+                    fx:id="borrowDetailButton"
+                    disable="true"
+                    onAction="#onShowBorrowDetail"
+                    style="-fx-font-size: 16px;"/>
+
+            <Button text="Quay lại"
+                    onAction="#onQuit"
+                    style="-fx-font-size: 16px;"/>
+
+
+        </HBox>
+    </top>
+
+    <!-- ===== CONTENT ===== -->
+    <center>
+        <StackPane>
+            <padding>
+                <Insets top="15" left="15" right="15" bottom="15"/>
+            </padding>
+                <!-- ===== Form hội viên ===== -->
+                <VBox VBox.vgrow="ALWAYS"
+                      spacing="10">
+                    <VBox >
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+                        <TableView fx:id="bookBorrowTableView" style="-fx-font-size: 16px;">
+                            <columns>
+                                <TableColumn fx:id="ordinalNumberColumn" text="STT" prefWidth="50"/>
+                                <TableColumn fx:id="borrowerCodeColumn" text="Mã hội viên"/>
+                                <TableColumn fx:id="borrowerNameColumn" text="Tên hội viên"/>
+                                <TableColumn fx:id="borrowDateColumn" text="TG mượn sách"/>
+                                <TableColumn fx:id="dueDateColumn" text="TG dự kiến trả sách"/>
+                                <TableColumn fx:id="returnDateColumn" text="TG trả sách"/>
+                                <TableColumn fx:id="lateFeeColumn" text="Phí phạt"/>
+                                <TableColumn fx:id="statusColumn" text="Trạng thái"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+        </StackPane>
+    </center>
+    <bottom>
+        <fx:include fx:id="pagination"
+                    source="/view/PaginationView.fxml"/>
+    </bottom>
+</BorderPane>

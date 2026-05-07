@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.user.AddUserController"
+      spacing="18"
+      alignment="CENTER_LEFT"
+      style="
+              -fx-padding: 60;
+              -fx-background-color: #ffffff;
+              -fx-border-color: #dddddd;
+              -fx-border-radius: 10;
+              -fx-background-radius: 10;
+          ">
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Thêm tài khoản" HBox.hgrow="ALWAYS" style="-fx-font-size: 22px;"/>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <HBox prefWidth="240" style="-fx-font-size: 16px;">
+            <Label text="Nhập tên đăng nhập : " />
+            <Label text="*"
+                   style="-fx-text-fill: red;"/>
+        </HBox>
+        <TextField fx:id="usernameField" promptText="Tên đăng nhập (8 -> 16 ký tự)" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <HBox prefWidth="240" style="-fx-font-size: 16px;">
+            <Label text="Nhập mật khẩu : " />
+            <Label text="*"
+                   style="-fx-text-fill: red;"/>
+        </HBox>
+        <StackPane fx:id="passwordContainer" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;">
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Mật Khẩu (8 -> 16 ký tự ,cả chữ và số)"/>
+
+            <TextField fx:id="passwordTextField"
+                       promptText="Mật Khẩu (8 -> 16 ký tự ,cả chữ và số)"
+                       visible="false"
+                       managed="false"/>
+        </StackPane>
+
+        <Button onAction="#onTogglePasswordVisibility" prefHeight="40" minWidth="40">
+            <graphic>
+                <FontIcon fx:id="iconEye"
+                          iconLiteral="fas-lock"
+                          iconSize="20"/>
+            </graphic>
+        </Button>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nhập tên người dùng : " prefWidth="240" style="-fx-font-size: 16px;"/>
+        <TextField fx:id="fullNameField" promptText="Họ và tên (chỉ chữ 2 - 50 ký tự)" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nhập tuổi : " prefWidth="240" style="-fx-font-size: 16px;" />
+        <TextField fx:id="ageField" promptText="Tuổi (1 - > 120 tuổi)" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Chọn giới tính : " prefWidth="240" style="-fx-font-size: 16px;"/>
+        <ComboBox fx:id="genderComboBox" maxWidth="200" style="-fx-font-size: 16px;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Chọn địa chỉ : " prefWidth="240" style="-fx-font-size: 16px;"/>
+        <ComboBox fx:id="addressComboBox" maxWidth="200" style="-fx-font-size: 16px;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nhập email : " prefWidth="240" style="-fx-font-size: 16px;"/>
+        <TextField fx:id="emailField" promptText="example@gmail.com" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nhập số điện thoại :" prefWidth="240" style="-fx-font-size: 16px;"/>
+        <TextField fx:id="phoneNumberField" promptText="0xxxxxxxxx (10 số)" HBox.hgrow="ALWAYS" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <HBox prefWidth="240" style="-fx-font-size: 16px;">
+            <Label text="Chọn vai trò :" />
+            <Label text="*"
+                   style="-fx-text-fill: red;"/>
+        </HBox>
+        <ComboBox fx:id="roleComboBox" maxWidth="200" style="-fx-font-size: 16px;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <Label fx:id="notificationLabel" style="-fx-font-size: 16px;" textFill="RED"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Lưu" onAction="#onSave" style="-fx-font-size: 16px;"/>
+        <Button text="Quay lại" onAction="#onQuit" style="-fx-font-size: 16px;"/>
+    </HBox>
+
+</VBox>
+
+
